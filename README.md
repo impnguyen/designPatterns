@@ -103,3 +103,13 @@ bad:
 #### example implementation
 [sourcecode](behavioralPatterns/command/Client.java)
 ![cli output for sample code](behavioralPatterns/resources/commandOutput.png "cli")
+
+#### related patterns and thoughts
+- the command pattern is an object orientated solution for callback functions
+- with lamda functions in Java 8 there is no need for command pattern anymore
+
+Related source:
+http://radar.oreilly.com/2014/12/using-the-command-pattern-with-lambda-expressions.html
+https://www.w3schools.com/java/java_lambda.asp
+
+
