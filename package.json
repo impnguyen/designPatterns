@@ -1,0 +1,22 @@
+{
+  "name": "designpatterns",
+  "version": "1.0.0",
+  "description": "design patterns implemented with Java",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/impnguyen/designPatterns.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/impnguyen/designPatterns/issues"
+  },
+  "homepage": "https://github.com/impnguyen/designPatterns#readme",
+  "dependencies": {
+    "markdown-toc": "^1.2.0"
+  }
+}
