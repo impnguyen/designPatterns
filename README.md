@@ -7,13 +7,15 @@ design patterns implemented with Java
 - [structure pattern](#structure-pattern)
 - [behavioral pattern](#behavioral-pattern)
   * [Command pattern](#command-pattern)
-    + [Intention](#intention)
+    + [intention](#intention)
     + [first impression out of definition](#first-impression-out-of-definition)
     + [motivation](#motivation)
     + [basic idea of the pattern](#basic-idea-of-the-pattern)
     + [actors](#actors)
     + [additional thoughts](#additional-thoughts)
+    + [sequence](#sequence)
     + [when to use](#when-to-use)
+    + [rating](#rating)
 
 <!-- tocstop -->
 
@@ -62,6 +64,22 @@ That means one invoker method will execute a series of commands. In GoF they are
 
 A macro command is also a subclass of a abstract command interface. They do not have explicit receiver, because they are executing a list of other commands. These concrete commands have their receiver. 
 
+The client should **never** call the execute methods from the commands. You always should add an invoker between client and commands. So the invoker invokes the execute methods from the commands. 
+
+The invoker should has the ability to **register** new commands and **executes** them. So the Client can registers his wish about commands. The invoker invokes the execute methods. 
+
+In reality the command classes need information like parameters or data as foundation to operate. You should use **Dependency Injection** to inject an **ExecutionContext** object. This kind of mechanism fullfills the requirement that a lot of other clients and environments can use this command. Do not work with a parameter list to map the needed data for commands.  
+
+#### sequence
+- client creates a concrete command object
+- client specify a receiver
+- invoker stores command
+- invoker trigger command by calling execute-inteface method on the command
+- concrete command executes actions on receiver
+
+consequences:
+- decoupling from invoker and receiver ( by carrieng the request out )
+
 #### when to use
 - if you need a "callback" (like in javascript) for object orientated languages. It is a object-oriented replacement for callbacks - GoF
 - if you want to specify, queue and execute requests at different time
@@ -69,3 +87,14 @@ A macro command is also a subclass of a abstract command interface. They do not 
 - if you want to support an undo mechanism
 - if you want to have a history list of all your executions and unexecutions
 - if you want to implement transactions. Each command has the interface "execute" so every transaction has to fullfil this interface. You can easily extend your system with transactions/commands.
+
+#### rating
+good:
+- decoupling from a request, his trigger and the receiver
+- a better abstraction and with the usage of so called "executionContext" it is useable in a lot of contexts
+- reuseability of commands
+- requests are storeable and can be invoke to a later time ( also serializable and invoke lately)
+- simple do/undo implementation design
+
+bad:
+- increasing amount of classes
