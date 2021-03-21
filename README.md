@@ -16,6 +16,7 @@ design patterns implemented with Java
     + [sequence](#sequence)
     + [when to use](#when-to-use)
     + [rating](#rating)
+    + [example implementation](#example-implementation)
 
 <!-- tocstop -->
 
@@ -98,3 +99,7 @@ good:
 
 bad:
 - increasing amount of classes
+
+#### example implementation
+[sourcecode](behavioralPatterns/command/Client.java)
+![cli output for sample code](behavioralPatterns/resources/commandOutput.png "cli")

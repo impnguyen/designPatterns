@@ -11,6 +11,11 @@ public class TurnOnSmartBulb implements ICommand{
 
     private IExecutionContext context;
 
+    public void setContext(IExecutionContext context){
+        Objects.requireNonNull(context, "bulb context is invalid");
+        this.context = context;
+    }
+
     public TurnOnSmartBulb(IExecutionContext bulbContext){
         Objects.requireNonNull(bulbContext, "Context is invalid");
     

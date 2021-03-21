@@ -4,7 +4,7 @@ public class BulbContext implements IExecutionContext {
 
     private int bulbId;
 
-    BulbContext(int bulbId){
+    public BulbContext(int bulbId){
         this.bulbId = bulbId;
     }
 
