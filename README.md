@@ -9,15 +9,26 @@ design patterns implemented with Java
   * [Command pattern](#command-pattern)
     + [intention](#intention)
     + [first impression out of definition](#first-impression-out-of-definition)
-    + [motivation](#motivation)
     + [basic idea of the pattern](#basic-idea-of-the-pattern)
+    + [UML](#uml)
     + [actors](#actors)
     + [additional thoughts](#additional-thoughts)
     + [sequence](#sequence)
     + [when to use](#when-to-use)
     + [rating](#rating)
-    + [example implementation](#example-implementation)
+    + [sample implementation](#sample-implementation)
     + [related patterns and thoughts](#related-patterns-and-thoughts)
+  * [Chain of Responsibility pattern: todo](#chain-of-responsibility-pattern-todo)
+    + [intention](#intention-1)
+    + [first impression out of definition](#first-impression-out-of-definition-1)
+    + [basic idea of the pattern](#basic-idea-of-the-pattern-1)
+    + [UML](#uml-1)
+    + [actors](#actors-1)
+    + [additional thoughts](#additional-thoughts-1)
+    + [sequence](#sequence-1)
+    + [when to use](#when-to-use-1)
+    + [sample implementation](#sample-implementation-1)
+    + [related patterns and thoughts](#related-patterns-and-thoughts-1)
 
 <!-- tocstop -->
 
@@ -102,7 +113,7 @@ good:
 bad:
 - increasing amount of classes
 
-#### example implementation
+#### sample implementation
 [sourcecode](behavioralPatterns/command/Client.java)
 ![cli output for sample code](behavioralPatterns/resources/commandOutput.png "cli")
 
@@ -149,6 +160,10 @@ In your application there could be a lot of chain objects you can **reuse**. But
 
 It is also possible that a chain executes **every part** of the chain because every part is **relevant**. 
 
+With an **abstract base class** for handler, we can bundle **redundant** methods like the check method for supported handlers or the nextHandler method to invoke the successor. 
+
+It is also **not necessary** to create a bunch of different classes to have a chain. A chain can also have a bunch of objects with **different status** by the same class. 
+
 #### sequence
 - client executes handle method from first object out of the chain
 - first concrete handler tries to handle request
@@ -168,8 +183,10 @@ h other. Not one chain object has to know about the whole chain structure, they 
 bad:
 - unhandled request are not known by the client
 
-#### example implementation
-tbd
+#### sample implementation
+[sourcecode](behavioralPatterns/chainOfResponsibility/Client.java)
+![cli output for sample code](behavioralPatterns/resources/corOutput.png "cli")
+
 
 #### related patterns and thoughts
 tbd
