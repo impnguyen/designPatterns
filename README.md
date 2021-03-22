@@ -17,6 +17,7 @@ design patterns implemented with Java
     + [when to use](#when-to-use)
     + [rating](#rating)
     + [example implementation](#example-implementation)
+    + [related patterns and thoughts](#related-patterns-and-thoughts)
 
 <!-- tocstop -->
 
@@ -38,16 +39,13 @@ design patterns implemented with Java
 |and support undoable operations| you also can design undo operations to this wrapped requests |
 |||
 
-#### motivation
-- if you don't know about the receiver
-- or you don't want to know about the receiver or receivers
-- if you don't have to know about the operation 
-- or you don't want to know about the operation
-
 #### basic idea of the pattern
 - a request will be store in an object
 - this object can be stored and passed around like other objects
 - this wrapped request object is a "command"
+
+#### UML
+![command pattern uml diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Command_pattern.svg/1200px-Command_pattern.svg.png)
 
 #### actors
 |actor|responsibility| example |
@@ -88,6 +86,10 @@ consequences:
 - if you want to support an undo mechanism
 - if you want to have a history list of all your executions and unexecutions
 - if you want to implement transactions. Each command has the interface "execute" so every transaction has to fullfil this interface. You can easily extend your system with transactions/commands.
+- if you don't know about the receiver
+- or you don't want to know about the receiver or receivers
+- if you don't have to know about the operation 
+- or you don't want to know about the operation
 
 #### rating
 good:
@@ -112,4 +114,62 @@ Related source:
 http://radar.oreilly.com/2014/12/using-the-command-pattern-with-lambda-expressions.html
 https://www.w3schools.com/java/java_lambda.asp
 
+### Chain of Responsibility pattern: todo
+#### intention
+"Avoid coupling the sender of a request to its receiver by giving more than one object a change to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it." - GoF
 
+#### first impression out of definition
+|part of definition| interpretation|
+|--|--|
+|"Avoid coupling the sender of a request to its receiver"| decouple the request from a sender and his receiver |
+|"by giving more than one object a change to handle the request"| use a bunch of objects trying to handle the request because the sender maybe do not know the relevant operations and objects |
+|"Chain the receiving objects"| put the object in contract, which possibly are relevant |
+|"and pass the request along the chain until an object handles it."| every object in contract and chain has the chance to handle the request. The exit scenario should be reached, once a object handled the request. |
+|||
+
+#### basic idea of the pattern
+- a handler interface defines a contract for concrete handlers
+- every handler knows the successor 
+- every handler can handles a request or forward it to the known successor
+
+
+#### UML
+![cor pattern uml diagram](https://miro.medium.com/max/982/1*A-RUUrXZtJmW5ImF853Xsg.png)
+
+#### actors
+|actor|responsibility| example |
+|--|--|--|
+|client| the guy who triggers the first object of the chain |
+|abstract handler| the interface which defines the handle and setNextHandler method |
+|concrete handler| the guy who can handle requests it is responsible for. Either it handles the request or it forwards the request to the successor
+|||
+
+#### additional thoughts
+In your application there could be a lot of chain objects you can **reuse**. But if the existing chain of responsibility **does not fit** to your new requirements. You have to define **redundant** objects to map your needs. 
+
+It is also possible that a chain executes **every part** of the chain because every part is **relevant**. 
+
+#### sequence
+- client executes handle method from first object out of the chain
+- first concrete handler tries to handle request
+- it forwards the request to its successor, if it could not be handle by itself
+- same procedure will be repeated until a chain object can handle the request 
+
+#### when to use
+- if the sender does not know the relevant objects to call
+- if a request is dependent from a context, so the target objects are
+- if you want to decouple a request to its potentially target objects
+- if a sender do not know that a couple of objects handles its request and especially if the sender do not know it at the start
+- if the list of objects, that can handle should be specified dynamically
+
+h other. Not one chain object has to know about the whole chain structure, they only have to know their successor. 
+- more flexibility: by changing the chain on runtime it is very flexible to add responsibilities to scenarios
+
+bad:
+- unhandled request are not known by the client
+
+#### example implementation
+tbd
+
+#### related patterns and thoughts
+tbd
