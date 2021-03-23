@@ -3,9 +3,8 @@ package behavioralPatterns.chainOfResponsibility;
 import behavioralPatterns.chainOfResponsibility.chain.auth.Base;
 import behavioralPatterns.chainOfResponsibility.chain.auth.OAuth;
 import behavioralPatterns.chainOfResponsibility.chain.auth.Saml;
-import behavioralPatterns.chainOfResponsibility.chain.emergency.Email;
+import behavioralPatterns.chainOfResponsibility.chain.emergency.EmergencyContext;
 import behavioralPatterns.chainOfResponsibility.chain.emergency.Messagebroker;
-import behavioralPatterns.chainOfResponsibility.chain.emergency.Sms;
 import behavioralPatterns.chainOfResponsibility.chain.auth.AuthType;
 
 public class Client{
@@ -27,9 +26,10 @@ public class Client{
         baseAuth.handleRequest(AuthType.SAML);
 
         System.out.println("------------------ second scenario: forced emergency chain ------------------");
-        Messagebroker broker = new Messagebroker();
+        EmergencyContext em = new EmergencyContext();
+        em.setMessage("SOS I need help!");
+
+        Messagebroker broker = new Messagebroker(em);
         broker.handleRequest();
-
-
     }
 }
