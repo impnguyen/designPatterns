@@ -1,11 +1,7 @@
 package behavioralPatterns.chainOfResponsibility.chain.auth;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import behavioralPatterns.chainOfResponsibility.AuthType;
-import behavioralPatterns.chainOfResponsibility.BaseHandler;
 
 public class OAuth extends BaseHandler{
 
@@ -33,11 +29,11 @@ public class OAuth extends BaseHandler{
     protected void executeHandler(AuthType authType) {
         switch (authType) {
             case OAUTH1:
-                System.out.println("authentication by oauth 1 protocol successful ");
+                System.out.println("authentication by oauth "+this.version+" protocol successful ");
                 break;
             
             case OAUTH2:
-                System.out.println("authentication by oauth 2 protocol successful ");
+                System.out.println("authentication by oauth "+this.version+" protocol successful ");
                 break;
         
             default:

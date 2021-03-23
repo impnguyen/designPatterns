@@ -7,28 +7,7 @@ design patterns implemented with Java
 - [structure pattern](#structure-pattern)
 - [behavioral pattern](#behavioral-pattern)
   * [Command pattern](#command-pattern)
-    + [intention](#intention)
-    + [first impression out of definition](#first-impression-out-of-definition)
-    + [basic idea of the pattern](#basic-idea-of-the-pattern)
-    + [UML](#uml)
-    + [actors](#actors)
-    + [additional thoughts](#additional-thoughts)
-    + [sequence](#sequence)
-    + [when to use](#when-to-use)
-    + [rating](#rating)
-    + [sample implementation](#sample-implementation)
-    + [related patterns and thoughts](#related-patterns-and-thoughts)
-  * [Chain of Responsibility pattern: todo](#chain-of-responsibility-pattern-todo)
-    + [intention](#intention-1)
-    + [first impression out of definition](#first-impression-out-of-definition-1)
-    + [basic idea of the pattern](#basic-idea-of-the-pattern-1)
-    + [UML](#uml-1)
-    + [actors](#actors-1)
-    + [additional thoughts](#additional-thoughts-1)
-    + [sequence](#sequence-1)
-    + [when to use](#when-to-use-1)
-    + [sample implementation](#sample-implementation-1)
-    + [related patterns and thoughts](#related-patterns-and-thoughts-1)
+  * [Chain of Responsibility pattern](#chain-of-responsibility-pattern)
 
 <!-- tocstop -->
 
@@ -125,7 +104,7 @@ Related source:
 http://radar.oreilly.com/2014/12/using-the-command-pattern-with-lambda-expressions.html
 https://www.w3schools.com/java/java_lambda.asp
 
-### Chain of Responsibility pattern: todo
+### Chain of Responsibility pattern
 #### intention
 "Avoid coupling the sender of a request to its receiver by giving more than one object a change to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it." - GoF
 

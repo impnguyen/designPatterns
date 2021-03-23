@@ -3,9 +3,6 @@ package behavioralPatterns.chainOfResponsibility.chain.auth;
 import java.util.Arrays;
 import java.util.List;
 
-import behavioralPatterns.chainOfResponsibility.BaseHandler;
-import behavioralPatterns.chainOfResponsibility.AuthType;
-
 public class Base extends BaseHandler {
 
     @Override

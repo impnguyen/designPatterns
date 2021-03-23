@@ -3,9 +3,6 @@ package behavioralPatterns.chainOfResponsibility.chain.auth;
 import java.util.Arrays;
 import java.util.List;
 
-import behavioralPatterns.chainOfResponsibility.BaseHandler;
-import behavioralPatterns.chainOfResponsibility.AuthType;
-
 public class Saml extends BaseHandler {
 
     public static final int V1 = 1, V2 = 2;
@@ -32,11 +29,11 @@ public class Saml extends BaseHandler {
     protected void executeHandler(AuthType authType) {
         switch (authType) {
             case SAML:
-                System.out.println("authentication by saml 1 protocol successful ");
+                System.out.println("authentication by saml "+this.version+" protocol successful ");
                 break;
             
             case SAML2:
-                System.out.println("authentication by saml 2 protocol successful ");
+                System.out.println("authentication by saml "+this.version+" protocol successful ");
                 break;
         
             default:

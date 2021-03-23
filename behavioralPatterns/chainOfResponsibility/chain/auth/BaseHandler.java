@@ -1,9 +1,6 @@
-package behavioralPatterns.chainOfResponsibility;
+package behavioralPatterns.chainOfResponsibility.chain.auth;
 
 import java.util.List;
-
-import behavioralPatterns.chainOfResponsibility.IHandler;
-
 public abstract class BaseHandler implements IHandler {
 
     private IHandler nextHandler;

@@ -1,4 +1,4 @@
-package behavioralPatterns.chainOfResponsibility;
+package behavioralPatterns.chainOfResponsibility.chain.auth;
 
 public interface IHandler{
 
