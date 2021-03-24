@@ -62,6 +62,12 @@ If you want to model a **massive tree**, which have component, whose referencing
 - this operation has the disadvantage, that the client has to test if it is a composite or a leaf
 
 If you need a **cascasding** deletion of children, it is enough to delete the parent. Without references the garbage collector will clean the children. 
+
+The pattern does not force and suggest a datatype for persist childen in a composite. But it is important to **select the right one** for the different use case. For example an array is very quick for big trees. A hashmap enables a search by an key. 
+
+Although it is important not to forget the aspect of performance. Big horizontal and vertical trees can lead to **memory issues**. Even if in java the garbage collector does a good job, the references have to be manage sensible. Existing references prevent the GC from doing its job. 
+
+
 #### sequence
 - clients access the composite tree with the component interface
 - if it is a leaf object, the request will be executed directly
@@ -84,8 +90,8 @@ bad:
 - the distinction between different components - like component a can has component b but not component c - has to be checked on run time
 
 #### sample implementation
-[sourcecode](behavioralPatterns/chainOfResponsibility/Client.java)
-![cli output for sample code](behavioralPatterns/resources/corOutput.png "cli")
+[sourcecode](structuralPatterns/composite/Client.java)
+![cli output for sample code](structuralPatterns/resources/compositOutput.png "cli")
 
 
 #### related patterns and thoughts
