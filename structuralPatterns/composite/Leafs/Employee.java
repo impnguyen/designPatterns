@@ -19,14 +19,5 @@ public class Employee extends OrganisationComponent {
     public void work(){
         System.out.println("employee: " + this.name + " starts working");
     }
-
-    @Override
-    public OrganisationComponent getComponent(String name){
-        if(this.getName() == name){
-            return this;
-        }else{
-            return null;
-        }
-    }
     
 }

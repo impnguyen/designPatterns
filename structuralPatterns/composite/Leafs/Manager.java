@@ -22,13 +22,4 @@ public class Manager extends OrganisationComponent{
         System.out.println("manager: " + this.name + " starts delegating");
     }
 
-    @Override
-    public OrganisationComponent getComponent(String name){
-        if(this.getName() == name){
-            return this;
-        }else{
-            return null;
-        }
-    }
-
 }

@@ -44,13 +44,14 @@ public class Client{
 
         itUnlimitedCorporation.work();
 
-        //error
         System.out.println("------------------ second scenario simple ------------------");
-        var judiKing = ((ItDepartment) itUnlimitedCorporation).getComponent("Basic Administration");
-        if(judiKing != null){
-            System.out.println(judiKing.getName() + " was found.");
+        String queryName = "Prulue Ancoda";
+
+        var searchOrga = ((ItDepartment) itUnlimitedCorporation).getComponent(queryName);
+        if(searchOrga != null){
+            System.out.println(searchOrga.getName() + " was found.");
         }else{
-            System.out.println("not found");
+            System.out.println("orga: " + queryName + " could not found in organisation " + itUnlimitedCorporation.getName());
         }
     }
 

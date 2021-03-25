@@ -15,7 +15,12 @@ public abstract class OrganisationComponent{
     } 
 
     public OrganisationComponent getComponent(String name){
-        throw new UnsupportedOperationException();
+        if(this.getName() == name){
+            return this;
+        }else{
+            System.out.println("compare query " + name + " with " + this.getName());
+            return null;
+        }
     }
     
 }

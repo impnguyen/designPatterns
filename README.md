@@ -91,7 +91,7 @@ bad:
 
 #### sample implementation
 [sourcecode](structuralPatterns/composite/Client.java)
-![cli output for sample code](structuralPatterns/resources/compositOutput.png "cli")
+![cli output for sample code](structuralPatterns/resources/compositeOutput.png "cli")
 
 
 #### related patterns and thoughts

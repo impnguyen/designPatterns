@@ -9,6 +9,13 @@
             "name": "Launch Client",
             "request": "launch",
             "mainClass": "structuralPatterns.composite.Client",
+            "projectName": "designPatterns_14f1ea49"
+        },
+        {
+            "type": "java",
+            "name": "Launch Client",
+            "request": "launch",
+            "mainClass": "structuralPatterns.composite.Client",
             "projectName": "designPatterns_2844b436"
         },
         {

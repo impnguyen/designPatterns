@@ -30,22 +30,19 @@ public class ItDepartment extends OrganisationComponent{
     public void work(){
         System.out.println("department: " + this.name + " starts working");
         System.out.println("--------------------------------------------");
+
         for (OrganisationComponent organisationComponent : orgComponents) {
             organisationComponent.work();
         }
     }
 
-    /*todo: error in search method*/
-    @Override
     public OrganisationComponent getComponent(String name){
         for (OrganisationComponent organisationComponent : orgComponents) {
-            if(organisationComponent.getName() == name){
-                return organisationComponent;
-            }else if(organisationComponent.getComposite() != null){
-                ((ItDepartment) organisationComponent).getComponent(name);
+            var searchComponent = organisationComponent.getComponent(name);
+            if(searchComponent != null && searchComponent.getName() == name){
+                return searchComponent;
             }
         }
-
         return null;
     }
 
