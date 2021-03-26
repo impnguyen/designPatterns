@@ -1,9 +1,12 @@
-# Entwurfsmuster
+# Software design patterns
 design patterns implemented with Java
+- Gang of Four
+- tbd
 
 <!-- toc -->
 
 - [creation pattern](#creation-pattern)
+  * [Singleton](#singleton)
 - [structure pattern](#structure-pattern)
   * [Composite](#composite)
 - [behavioral pattern](#behavioral-pattern)
@@ -13,6 +16,71 @@ design patterns implemented with Java
 <!-- tocstop -->
 
 ## creation pattern
+
+### Singleton
+#### intention
+"Ensure a class only has one instance, and provide a global point of access to it." - GoF
+
+#### first impression out of definition
+|part of definition| interpretation|
+|--|--|
+|"Ensure a class only has one instance" | a class can only has excatly one instance |
+|"and provide a global point of access to it"| there is a global mechanism to access these kind of objects |
+|||
+
+#### basic idea of the pattern
+- ensures that only one object exists to a class
+- sometimes there is the necessity to have only one instance for example:
+  - printer pool
+  - logger
+  - only one file system
+  - only one window manager
+- this pattern allows to have only one instance of a target class
+
+
+
+#### UML
+![singleton pattern uml diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Singleton_UML_class_diagram.svg/440px-Singleton_UML_class_diagram.svg.png)
+
+#### actors
+|actor|responsibility| example |
+|--|--|--|
+|client| the access via a well-known interface the target object |
+| singleton | guarantees that only one instance is available |
+|||
+
+#### additional thoughts
+Especially in Java there is no guarantee that a class has only one object. You only can ensure one object per classloader instance. A JVM can has a bunch of class loader. The only guarantee we can have is, that one classloader has one instance. 
+
+If you use singleton massively it is kind of static usage. It is not object orienated anymore, because you can access everytime and everywhere to target objects. 
+
+You only use singleton objects in centralized use cases. 
+
+#### sequence
+- the client asks the singleton to get the target object
+- the singleton maintain the access and only returns one object of the target class
+
+#### when to use
+- there must be exactly one instance of a class and the client has a well-known access point
+
+#### rating
+good:
+- The singleton has the highness about the creation and behaviour about the target instance so it is under control. That means it is regulated how and when clients can access it.
+- so it allows the central access point
+- the access is structured and the details are hided
+
+bad:
+- with the usage of singleton it is a conflict against object orientation
+- by over usage of singleton the polymorphs is supressed
+- it is a challange to ensure that only one instance exists (in JVM, in multi instance apps and in multi threading)
+- it is not guaranted that a single object was created (cause: multi classloader in java)
+
+#### sample implementation
+[sourcecode](creationalPatterns/singleton/Client.java)
+![cli output for sample code](creationalPatterns/resources/singletonOutput.png "Singleton")
+
+#### related patterns and thoughts
+tbd
 
 ## structure pattern
 
@@ -91,7 +159,7 @@ bad:
 
 #### sample implementation
 [sourcecode](structuralPatterns/composite/Client.java)
-![cli output for sample code](structuralPatterns/resources/compositeOutput.png "cli")
+![cli output for sample code](structuralPatterns/resources/compositeOutput.png "composite")
 
 
 #### related patterns and thoughts
@@ -180,7 +248,7 @@ bad:
 
 #### sample implementation
 [sourcecode](behavioralPatterns/command/Client.java)
-![cli output for sample code](behavioralPatterns/resources/commandOutput.png "cli")
+![cli output for sample code](behavioralPatterns/resources/commandOutput.png "command")
 
 #### related patterns and thoughts
 - the command pattern is an object orientated solution for callback functions
@@ -252,8 +320,8 @@ bad:
 
 #### sample implementation
 [sourcecode](behavioralPatterns/chainOfResponsibility/Client.java)
-![cli output for sample code](behavioralPatterns/resources/corOutput.png "cli")
+![cli output for sample code](behavioralPatterns/resources/corOutput.png "cor")
 
 
 #### related patterns and thoughts
-tbd
+- for multiple controled instances there is the pattern "Multiton"
