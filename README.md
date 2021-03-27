@@ -82,6 +82,65 @@ bad:
 #### related patterns and thoughts
 - for the sake of using a bunch of managed instances there is the multiton pattern
 
+### Prototype
+#### intention
+"Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype" - GoF
+
+#### first impression out of definition
+|part of definition| interpretation|
+|--|--|
+|"Specify the kinds of objects" | specify the target objects that you need |
+|"to create using a prototypical instance"| to create a protoype object which maybe not contains the final condition |
+|"and create new objects by copying this prototype"| with this protoype we can create new targets objects by copying it |
+
+#### basic idea of the pattern
+- 
+
+
+
+#### UML
+![singleton pattern uml diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Singleton_UML_class_diagram.svg/440px-Singleton_UML_class_diagram.svg.png)
+
+#### actors
+|actor|responsibility| example |
+|--|--|--|
+|client| the access via a well-known interface the target object |
+| singleton | guarantees that only one instance is available |
+|||
+
+#### additional thoughts
+Especially in Java there is no guarantee that a class has only one object. You only can ensure one object per classloader instance. A JVM can has a bunch of class loader. The only guarantee we can have is, that one classloader has one instance. 
+
+If you use singleton massively it is kind of static usage. It is not object orienated anymore, because you can access everytime and everywhere to target objects. 
+
+You only use singleton objects in centralized use cases. 
+
+#### sequence
+- the client asks the singleton to get the target object
+- the singleton maintain the access and only returns one object of the target class
+
+#### when to use
+- there must be exactly one instance of a class and the client has a well-known access point
+
+#### rating
+good:
+- The singleton has the highness about the creation and behaviour about the target instance so it is under control. That means it is regulated how and when clients can access it.
+- so it allows the central access point
+- the access is structured and the details are hided
+
+bad:
+- with the usage of singleton it is a conflict against object orientation
+- by over usage of singleton the polymorphs is supressed
+- it is a challange to ensure that only one instance exists (in JVM, in multi instance apps and in multi threading)
+- it is not guaranted that a single object was created (cause: multi classloader in java)
+
+#### sample implementation
+[sourcecode](creationalPatterns/singleton/Client.java)
+![cli output for sample code](creationalPatterns/resources/singletonOutput.png "Singleton")
+
+#### related patterns and thoughts
+- for the sake of using a bunch of managed instances there is the multiton pattern
+
 ## structure pattern
 
 ### Composite
