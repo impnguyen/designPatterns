@@ -80,7 +80,7 @@ bad:
 ![cli output for sample code](creationalPatterns/resources/singletonOutput.png "Singleton")
 
 #### related patterns and thoughts
-tbd
+- for the sake of using a bunch of managed instances there is the multiton pattern
 
 ## structure pattern
 
