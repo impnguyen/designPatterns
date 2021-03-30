@@ -169,6 +169,76 @@ bad:
 - with visitor pattern you can localize operations and behaviour instead of spreading it over the leafs and compositions
 
 
+
+### Flyweight
+#### intention
+"Use sharing to support large numbers of fine-grained objects efficiently" - GoF
+
+#### first impression out of definition
+|part of definition| interpretation|
+|--|--|
+|"Use sharing to support ... efficiently"| reuse an object to support other objects in a efficient way |
+|"large numbers of fine-grained objects efficiently"| it works with a huge number of object which maybe do only distinguish in little aspects |
+
+#### basic idea of the pattern
+- the flyweight enables cost efficiency mechanism to manage a huge amount of objects
+- it allows to share an basic object to reuse of an amount of other "objects"
+- those shareable object do have instrinsic and extrinsic states. 
+  - intrinsic state: represents by a flyweight which has a basic foundation for all compatible "objects"
+  - extrinsic state: represents specific information which differ from other "objects"
+
+
+
+#### UML
+![fw pattern uml diagram](https://upload.wikimedia.org/wikipedia/de/3/37/Fliegengewicht_Klassen.png)
+
+#### actors
+|actor|responsibility| example |
+|--|--|--|
+| flyweight| interface for flyweight, so they can work with the extrinsic state |
+| concrete flyweight | a concrete class which implements the interface methods and stores intrinsic state. This object is shareable and is independent from another flyweight contexts. |
+| unshared concrete flyweight| not shareable flyweights. (tbd) |
+|flyweight factory| a factory which produces flyweights based on a key. The factory makes it shareable. |
+| client | has the job to manage the flyweights. Has the responsibility to store the extrinsic states |
+|||
+
+#### additional thoughts
+The client is responsible to pass the extrinsic state to flyweight if the full "object" is needed. By using the flyweight pattern it will introduce costs for operations like transfering, searching or assembling the flyweight with context. 
+
+#### sequence
+- the client request a flyweight by an id from flyweight factory
+- the flyweight factory checks if there is a shareable flyweight based on the id
+- if not the factory creates the instance, returns it to the client and manage it in a pool
+- the client inject the extrinsic state into the flyweight if it needs the operation out of the target flyweight
+
+#### when to use
+- if you use a large number of objects
+- use flyweights if it is too pentiful to create and manage all objects
+- storage costs are high or not that much available to store them all in objects
+- most objects fulfill the extrinsic state
+- if you can eliminated a huge amount of objects by using flyweight
+- if your objects do not depend on uniqueness
+
+#### rating
+good:
+- even more you have flyweight, the more you have memory saving
+- youre reduce the amount of objects massivly
+
+
+bad:
+- you have additional runtime costs for managing the extrinsic state (like searching, transfering and so on)
+
+#### sample implementation
+[sourcecode](structuralPatterns/composite/Clientd.java)
+![cli output for sample code](structuralPatterns/resources/compositeOutputd.png "composite")
+
+
+#### related patterns and thoughts
+- flyweights are often used with composite pattern to realize big composition trees
+
+
+
+
 ## behavioral pattern
 ### Command
 #### intention
